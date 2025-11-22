@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#000000">
+    <title>Neon Dash</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+
+    <div class="game-container">
+        
+        <div id="start-screen" class="ui-layer">
+            <h1>NEON DASH</h1>
+            <p class="version">v3.0 Stable</p>
+            <div class="btn-group">
+                <button class="btn zen" onclick="startGame('easy')">简单<br><span>ZEN</span></button>
+                <button class="btn normal" onclick="startGame('normal')">普通<br><span>NORMAL</span></button>
+                <button class="btn cyber" onclick="startGame('hard')">困难<br><span>CYBER</span></button>
+            </div>
+        </div>
+
+        <div id="game-over-screen" class="ui-layer hidden">
+            <h2 class="over-title">CRASHED</h2>
+            <p class="final-score">得分: <span id="final-score-val">0</span></p>
+            <div class="btn-group">
+                <button class="btn normal" onclick="restartGame()">再试一次</button>
+                <button class="btn" style="border-color: #666; color: #aaa;" onclick="goHome()">返回主页</button>
+            </div>
+        </div>
+
+        <div id="game-hud" class="hidden">
+            <span id="score">0</span>
+        </div>
+        
+        <div id="touch-layer" class="hidden">
+            <div class="touch-zone" ontouchstart="handleInput('left', true); return false;" ontouchend="handleInput('left', false)"></div>
+            <div class="touch-zone" ontouchstart="handleInput('right', true); return false;" ontouchend="handleInput('right', false)"></div>
+        </div>
+
+        <canvas id="gameCanvas"></canvas>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./sw.js');
+        }
+    </script>
+</body>
+</html>
