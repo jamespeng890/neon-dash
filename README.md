@@ -11,8 +11,7 @@
 
 **Neon Dash** 是一个轻量级的网页游戏。玩家需要控制霓虹方块躲避不断下落的障碍物。游戏完全使用原生 JavaScript 编写，没有依赖任何庞大的游戏引擎，因此加载速度极快。
 
-**[👉 点击这里在线试玩 (Play Demo)](https://你的用户名.github.io/neon-dash/)**
-*(注意：请在设置好 GitHub Pages 后，将上面的链接替换为你真正的游戏链接)*
+**[👉 点击这里在线试玩 (Play Demo)]([https://你的用户名.github.io/neon-dash/](https://ultradomain.shop/))**
 
 ## ✨ 特色功能 (Features)
 
