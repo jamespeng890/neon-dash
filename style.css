@@ -1,0 +1,137 @@
+/* style.css - 稳定版 v3 */
+:root {
+    --bg-color: #0f0f1a;
+    --neon-blue: #00f3ff;
+    --neon-red: #ff0055;
+    --neon-green: #00ff9d;
+}
+
+* {
+    box-sizing: border-box;
+    /* --- 核心修复：暴力禁止所有选字行为 --- */
+    -webkit-user-select: none; /* Chrome/Safari/Edge */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* IE/Edge Legacy */
+    user-select: none;         /* 标准 */
+    -webkit-tap-highlight-color: transparent; /* 去除手机点击高亮色块 */
+}
+
+body {
+    margin: 0;
+    background-color: #000;
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow: hidden;
+    touch-action: none; /* 禁止缩放和滚动 */
+    width: 100vw;
+    height: 100dvh; /* 完美适配手机高度 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-width: 500px;
+    background: var(--bg-color);
+    overflow: hidden;
+}
+
+canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* UI 层 */
+.ui-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background: rgba(15, 15, 26, 0.95);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 隐藏辅助类 */
+.hidden { display: none !important; }
+
+/* 标题 */
+h1 {
+    font-size: 3rem;
+    color: var(--neon-blue);
+    text-shadow: 0 0 20px var(--neon-blue);
+    margin: 0 0 10px 0;
+    font-style: italic;
+    pointer-events: none; /* 让标题完全不响应鼠标，防止干扰 */
+}
+
+.version { color: #666; font-size: 0.8rem; margin-bottom: 30px; }
+
+/* 按钮组 */
+.btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 80%;
+    z-index: 101; /* 确保按钮在最最上面 */
+}
+
+.btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid #444;
+    color: white;
+    padding: 18px 0;
+    font-size: 1.2rem;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: relative;
+    /* 确保按钮可以被点击 */
+    pointer-events: auto; 
+}
+
+.btn span { font-size: 0.8rem; opacity: 0.7; display: block; font-weight: normal; margin-top: 4px;}
+
+/* 颜色状态 */
+.btn.zen { border-color: var(--neon-green); color: var(--neon-green); }
+.btn.normal { border-color: var(--neon-blue); color: var(--neon-blue); }
+.btn.cyber { border-color: var(--neon-red); color: var(--neon-red); }
+
+/* 点击反馈 */
+.btn:active { transform: scale(0.96); background: rgba(255,255,255,0.15); }
+
+/* 游戏结束文字 */
+.over-title { font-size: 2.5rem; color: var(--neon-red); margin-bottom: 10px; pointer-events: none; }
+.final-score { font-size: 1.5rem; margin-bottom: 40px; pointer-events: none; }
+
+/* 游戏分数 HUD */
+#game-hud {
+    position: absolute;
+    top: 10%;
+    width: 100%;
+    text-align: center;
+    pointer-events: none; /* 穿透分数层 */
+    z-index: 50;
+}
+#score { font-size: 4rem; font-weight: 900; color: rgba(255,255,255,0.15); }
+
+/* 触摸控制层 */
+#touch-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10; /* 在 Canvas 之上 */
+    display: flex;
+}
+.touch-zone { width: 50%; height: 100%; }
